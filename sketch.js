@@ -2,10 +2,14 @@ function setup() {
   createCanvas(800, 600);
 }
 
-function draw() {
-  background(30);
-}
 
+
+let spriteSheet;
+
+function preload() {
+  spriteSheet = loadImage("Sherma-sprites.png");
+  shermaAnim = loadAnimation(spriteSheet, 2048, 2048);
+}
 
 
 
@@ -35,20 +39,31 @@ function setup() {
   }
 }
 
+
+
 function draw() {
   background(20);
+
+  Animation(shermaAnim);
+
 
   drawHitLine();
   updateNotes();
   drawNotes();
   drawUI();
+
+
 }
+
+
 
 function drawHitLine() {
   stroke(255);
   strokeWeight(4);
   line(hitLineX, 0, hitLineX, height);
 }
+
+
 
 function updateNotes() {
   for (let note of notes) {
@@ -91,6 +106,9 @@ function keyPressed() {
   }
 }
 
+
+
+
 function checkHit() {
   let bestNote = null;
   let bestDist = Infinity;
@@ -122,6 +140,9 @@ function checkHit() {
   }
 }
 
+
+
+
 function drawUI() {
   fill(255);
   textSize(24);
@@ -130,6 +151,8 @@ function drawUI() {
   textSize(40);
   text(message, 350, 100);
 }
+
+
 
 
 function updateNotes() {
