@@ -8,23 +8,42 @@ let score = 0;
 let animation = [];
 let shermas = [];
 
+
+
+
+
 function preload() {
-  preloadShermaSinging();
+
 }
 
-screenX = 1000;
-screenY = 400;
+
+function draw() {
+  background(0);
+
+  for (let sherma of shermas) {
+    sherma.show();
+    sherma.animate();
+  }
+}
+
 
 function setup() {
   createCanvas(640, 480);
-  frameRate(6);
-  imageMode(CENTER);
+  let frames = spritedata.frames;
+  for (let i = 0; i < frames.length; i++) {
+    let pos = frames[i].position;
+    let img = spritesheet.get(pos.x, pos.y, pos.w, pos.h);
+    animation.push(img);
+  }
+
+  for (let i = 0; i < 5; i++) {
+    shermas[i] = new Sprite(animation, 0, i * 75, random(0.1, 0.4));
+  }
 }
+
 
 function setup() {
   createCanvas(800, 400);
-  frameRate(10);
-  imageMode(CENTER);
 
   for (let i = 0; i < 10; i++) {
     notes.push({
@@ -37,14 +56,16 @@ function setup() {
       type: random() < 0.3 ? "hold" : "tap",
       length: random(100, 200), // held notes
       holding: false,
-      holdProgress: 0,
+      holdProgress: 0
     });
   }
 }
 
+
+
+
 function draw() {
-  background(220);
-  drawSherma();
+  background(20);
   drawHitLine();
   updateNotes();
   drawNotes();
