@@ -1,4 +1,4 @@
-let message = 'Hello world'
+let message = '';
 
 
 function drawUI() {

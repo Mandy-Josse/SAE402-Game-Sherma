@@ -25,10 +25,11 @@ function setup() {
   createCanvas(800, 400);
   frameRate(10);
   imageMode(CENTER);
+    
 
   for (let i = 0; i < 10; i++) {
     notes.push({
-      x: 800 + i * 300,
+      x: windowWidth + i * 300,
       y: 200,
       size: 40,
       hit: false,

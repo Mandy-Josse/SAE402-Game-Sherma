@@ -24,7 +24,7 @@ function preloadShermaAwakening() {
 function drawSherma() {
   let shermaImg = shermaFrames[shermaIndex];
   let shermaX = screenX/2;
-  let shermaY = screenY/1.25;
+  let shermaY = screenY/0.75;
 
   image(shermaImg, shermaX, shermaY - shermaImg.height / 2);
 
