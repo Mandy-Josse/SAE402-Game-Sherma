@@ -10,19 +10,16 @@ let shermas = [];
 
 function preload() {
   preloadShermaSinging();
+  preloadShermaMiss();
+  // preloadShermaAwakening();
+ 
 }
 
 screenX = 1000;
 screenY = 400;
 
 function setup() {
-  createCanvas(640, 480);
-  frameRate(6);
-  imageMode(CENTER);
-}
-
-function setup() {
-  createCanvas(800, 400);
+  createCanvas(screenX, screenY);
   frameRate(10);
   imageMode(CENTER);
     
@@ -35,19 +32,16 @@ function setup() {
       hit: false,
       missed: false,
       trail: [],
-      type: random() < 0.3 ? "hold" : "tap",
-      length: random(100, 200), // held notes
-      holding: false,
-      holdProgress: 0,
     });
   }
 }
 
 function draw() {
   background(220);
-  drawSherma();
+  drawSherma(100, 350);
   drawHitLine();
   updateNotes();
   drawNotes();
   drawUI();
+
 }

@@ -6,7 +6,9 @@ function drawUI() {
   textSize(24);
   text("Score: " + score, 20, 30);
 
+  text("PRESS SPACE TO PLAY", screenX/2, 50);
+
   textSize(40);
-  text(message, 350, 100);
+  text(message, screenX/2, 100);
 }
 
