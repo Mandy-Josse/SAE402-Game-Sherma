@@ -1,12 +1,10 @@
-
-
+let speed = 20;
 
 function drawHitLine() {
   stroke(255);
   strokeWeight(4);
   line(hitLineX, 0, hitLineX, height);
 }
-
 
 
 
@@ -38,8 +36,6 @@ function keyPressed() {
 }
 
 
-
-
 function checkHit() {
   let bestNote = null;
   let bestDist = Infinity;
@@ -49,7 +45,8 @@ function checkHit() {
 
     let distToLine = abs(note.x - hitLineX);
 
-    if (distToLine < bestDist) {
+
+    if (distToLine < 40 && distToLine < bestDist) {
       bestDist = distToLine;
       bestNote = note;
     }
@@ -59,35 +56,32 @@ function checkHit() {
     if (bestDist < 10) {
       message = "PERFECT";
       score += 100;
-      bestNote.hit = true;
-    } else if (bestDist < 25) {
+    } else if (bestDist < 26) {
       message = "GOOD";
       score += 50;
-      bestNote.hit = true;
-    } else {
+    } else if (bestDist >= 26){
       message = "MISS";
-      score += 0;
     }
+
+    bestNote.hit = true;
   }
 }
-
-
 function updateNotes() {
   for (let note of notes) {
-    note.x -= 30;
+    if (note.hit) continue;
 
-    // Save trail
+    note.x -= speed;
+
+    // Trail
     note.trail.push({ x: note.x, y: note.y });
     if (note.trail.length > 10) {
       note.trail.shift();
     }
 
-    // Detect miss (if passed hit line)
-    if (!note.hit && !note.missed && note.x < hitLineX - 30) {
-      note.missed = true;
-      score += 0;
-      message = "MISS";
+    // Auto miss if it passed the line, but only if still unhit
+    if (note.x < hitLineX - 40 && !note.hit) {
+      note.hit = true;
+      message = "MISS"; 
     }
   }
 }
-

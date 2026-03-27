@@ -11,20 +11,20 @@ function preloadShermaSinging() {
 
 function preloadShermaMiss() {
   for (let i = 1; i <= totalshermaFrames; i++) {
-    shermaFrames.push(loadImage(`sprites/Miss/sherma-singing-${i}.png`));
+    shermaFrames.push(loadImage(`sprites/Miss/sherma-miss-${i}.png`));
   }
 }
 
-function preloadShermaAwakening() {
-  for (let i = 1; i <= totalshermaFrames; i++) {
-    shermaFrames.push(loadImage(`sprites/Awakening/sherma-singing-${i}.png`));
-  }
-}
+// function preloadShermaAwakening() {
+//   for (let i = 1; i <= totalshermaFrames; i++) {
+//     shermaFrames.push(loadImage(`sprites/Awakening/sherma-awakening-${i}.png`));
+//   }
+// }
 
-function drawSherma() {
+function drawSherma(posX, posY) {
   let shermaImg = shermaFrames[shermaIndex];
-  let shermaX = screenX/2;
-  let shermaY = screenY/1.25;
+  let shermaX = posX;
+  let shermaY = posY;
 
   image(shermaImg, shermaX, shermaY - shermaImg.height / 2);
 
