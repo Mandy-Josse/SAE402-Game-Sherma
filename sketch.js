@@ -15,8 +15,8 @@ function preload() {
  
 }
 
-screenX = 1000;
-screenY = 400;
+screenX = 960;
+screenY = 440;
 
 
 function setup() {
@@ -25,7 +25,7 @@ function setup() {
   imageMode(CENTER);
     
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 30; i++) {
     notes.push({
       x: windowWidth + i * 300,
       y: 200,
@@ -50,7 +50,8 @@ function draw() {
   drawUI();
 
 
-  if (score >= 300) {
+
+  if (score >= 1000) {
     removeUI()
     background(220);
     drawSherma(100, 350);
