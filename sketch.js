@@ -16,7 +16,7 @@ function preload() {
 }
 
 screenX = 960;
-screenY = 440;
+screenY = 540;
 
 
 function setup() {
